@@ -1,0 +1,64 @@
+{
+  "name": "hapi-falcor-playground",
+  "version": "1.0.0",
+  "description": "Origin server for Laurel & Wolf's client applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node index.js",
+    "start:dev": "nodemon index.js",
+    "debug": "npm-run-all --parallel debug:server debug:inspector debug:browser",
+    "debug:server": "nodemon --debug index.js",
+    "debug:inspector": "node-inspector -p 8081",
+    "debug:browser": "open -a \"Google Chrome\" http://127.0.0.1:8081/?ws=127.0.0.1:8081&port=5858"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dbslone/hapi-falcor-playground.git"
+  },
+  "author": "David Slone",
+  "bugs": {
+    "url": "https://github.com/dbslone/hapi-falcor-playground/issues"
+  },
+  "homepage": "https://github.com/dbslone/hapi-falcor-playground#readme",
+  "dependencies": {
+    "falcor": "^0.1.16",
+    "falcor-hapi": "0.0.3",
+    "falcor-router": "^0.2.12",
+    "hapi": "^12.1.0",
+    "lodash": "^4.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.4.5",
+    "babel-core": "^6.4.5",
+    "babel-loader": "^6.2.1",
+    "babel-preset-stage-0": "^6.3.13",
+    "babelify": "^7.2.0",
+    "chai": "^3.5.0",
+    "eslint": "^1.10.3",
+    "eslint-config-defaults": "^8.0.2",
+    "eslint-plugin-filenames": "^0.2.0",
+    "expect": "^1.13.4",
+    "falcor-http-datasource": "^0.1.3",
+    "isparta-loader": "^2.0.0",
+    "karma": "^0.13.19",
+    "karma-browserstack-launcher": "^0.1.6",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-cli": "^0.1.1",
+    "karma-coverage": "^0.5.3",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-ie-launcher": "^0.2.0",
+    "karma-mocha": "^0.2.0",
+    "karma-mocha-reporter": "^1.1.1",
+    "karma-safari-launcher": "^0.1.1",
+    "karma-sourcemap-loader": "^0.3.6",
+    "karma-webpack": "^1.7.0",
+    "mocha": "^2.3.3",
+    "node-inspector": "^0.12.5",
+    "nodemon": "^1.8.1",
+    "npm-run-all": "^1.5.1",
+    "webpack": "^1.12.12",
+    "webpack-dev-server": "^1.12.1",
+    "webpack-notifier": "^1.2.1"
+  }
+}
