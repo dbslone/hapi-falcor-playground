@@ -1,27 +1,40 @@
-require('dotenv').config()
-
 // Falcor Configuration
-const FalcorServer = require('falcor-hapi')
+const FalcorHandler = require('falcor-hapi')
 const Hapi = require('hapi')
-const Router = require('./router')
+const routes = require('./routes')
 
-const app = new Hapi.Server()
+const app = new Hapi.Server({
+  debug: {
+    request: ['error', 'read', 'database']
+  }
+})
 app.connection({
   host: 'localhost',
   port: 9090,
   routes: {
     cors: {
-      credentials: true
+      additionalHeaders: ['X-AUTH-ENTITY', 'X-AUTH-ID', 'X-AUTH-TOKEN'],
+      credentials: true,
+      origin: ['*']
     }
   }
 })
 
-app.route({
-  method: ['GET', 'POST'],
-  path: '/model.json',
-  handler: FalcorServer.dataSourceRoute((req/*, res*/) => {
+app.register(FalcorHandler, (err) => {
 
-    return new Router(req)
+  if (err) {
+    console.error('Failed to load plugin: ', err)
+  }
+
+  app.route({
+    method: ['GET', 'POST'],
+    path: '/model.json',
+    handler: {
+      falcor: {
+        routes
+      }
+    }
   })
+
+  app.start()
 })
-app.start()
