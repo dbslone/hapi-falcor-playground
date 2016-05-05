@@ -1,7 +1,6 @@
 'use strict'
 
 const falcor = require('falcor')
-const Router = require('falcor-router')
 const _ = require('lodash')
 
 const $ref = falcor.Model.ref
@@ -9,20 +8,13 @@ const $atom = falcor.Model.atom
 const $error = falcor.Model.error
 const $value = falcor.Model.pathValue
 
-
 let usersById = {
   0: {name: 'User 0', email: 'example1@test.com', phoneNumber: '555-555-5555'},
   1: {name: 'User 1', email: 'example1@test.com', phoneNumber: '555-555-5555'},
   2: {name: 'User 2', email: 'example2@test.com', phoneNumber: '555-555-5555'}
 }
 
-let users = [
-  $ref(['userById', 0]),
-  $ref(['userById', 1]),
-  $ref(['userById', 2])
-]
-
-const UserRouterBase = Router.createClass([
+const routes = [
   {
     route: 'users[{integers:indices}][{keys:props}]',
     get (pathSet) {
@@ -67,12 +59,6 @@ const UserRouterBase = Router.createClass([
       }, [])
     }
   }
-])
+]
 
-const UserRouter = function () {
-
-  UserRouterBase.call(this)
-}
-UserRouter.prototype = Object.create(UserRouterBase.prototype)
-
-module.exports = UserRouter
+module.exports = routes
