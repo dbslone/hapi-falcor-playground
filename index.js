@@ -1,7 +1,7 @@
 // Falcor Configuration
-const FalcorHandler = require('falcor-hapi')
-const Hapi = require('hapi')
-const routes = require('./routes')
+import FalcorHandler from 'falcor-hapi'
+import Hapi from 'hapi'
+import routes from './routes'
 
 const app = new Hapi.Server({
   debug: {
