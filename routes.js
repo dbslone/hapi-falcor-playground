@@ -1,7 +1,5 @@
-'use strict'
-
-const falcor = require('falcor')
-const _ = require('lodash')
+import falcor from 'falcor'
+import {reduce, map} from 'lodash'
 
 const $ref = falcor.Model.ref
 const $atom = falcor.Model.atom
@@ -24,10 +22,10 @@ const routes = [
       const userIds = pathSet.indices
       const userProps = pathSet.props
 
-      return _.reduce(userIds, (arr, userId) => {
+      return reduce(userIds, (arr, userId) => {
 
         const user = usersById[userId]
-        const props = _.map(userProps, (prop) => {
+        const props = map(userProps, (prop) => {
 
           return $value(['users', userId, prop], user[prop])
         })
