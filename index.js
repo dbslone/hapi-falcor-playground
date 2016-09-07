@@ -20,6 +20,21 @@ app.connection({
   }
 })
 
+app.register(require('inert'), (err) => {
+
+  if (err) {
+    throw err
+  }
+
+  app.route({
+    method: 'GET',
+    path: '/home',
+    handler: (request, reply) => {
+      reply.file('./public/home.html')
+    }
+  })
+})
+
 app.register(FalcorHandler, (err) => {
 
   if (err) {
