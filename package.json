@@ -1,6 +1,6 @@
 {
   "name": "hapi-falcor-playground",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "HAPI Falcor Playground",
   "main": "index.js",
   "scripts": {
